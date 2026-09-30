@@ -1,0 +1,77 @@
+:host{ display:flex; justify-content:center; padding: 30px 16px; }
+
+.marco-telefono{
+  width: 380px;
+  max-width: 100%;
+  height: 780px;
+  background: #fff;
+  border-radius: 38px;
+  border: 8px solid #1c1c1c;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  overflow: hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.barra-estado{
+  display:flex; justify-content:space-between;
+  padding: 10px 22px 0; font-size: 0.7rem; font-weight:600; color: var(--color-texto);
+}
+
+.encabezado-movil{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 8px 20px 12px;
+}
+.logo-marca-movil{ display:flex; align-items:center; gap:6px; font-family: var(--fuente-titulo); font-weight:900; font-size:1rem; }
+.logo-icono-movil{ width:18px; height:18px; }
+
+.contenido-movil{ flex:1; overflow-y:auto; padding: 0 20px 20px; }
+
+/* Inicio */
+.titulo-hero-movil{ font-family: var(--fuente-titulo); font-weight:900; font-size: 2.1rem; line-height: 0.95; margin: 4px 0 4px; }
+.subtitulo-hero-movil{ font-size: 0.7rem; letter-spacing:.5px; text-transform:uppercase; color: var(--color-texto-suave); margin: 0 0 14px; }
+.tarjeta-hero-movil{ position:relative; border-radius: 22px; overflow:hidden; margin-bottom: 20px; background:#eee; }
+.foto-hero-movil{ width:100%; height: 220px; object-fit:cover; display:block; }
+.boton-pedido-movil{
+  position:absolute; bottom:12px; right:12px; display:flex; align-items:center; gap:8px;
+  background: var(--color-acento); color:#fff; border:none; border-radius:50px; padding: 9px 16px;
+  font-size: 0.75rem; font-weight:700; font-family:inherit; cursor:pointer;
+}
+.separador-boton-movil{ width:1px; height:12px; background:rgba(255,255,255,.6); }
+.subtitulo-seccion-movil{ font-size: 0.82rem; font-weight:600; margin: 0 0 10px; }
+.lista-recomendados{ display:flex; gap: 12px; }
+.tarjeta-recomendado{ flex:1; text-align:left; border:none; background:#f7f7f7; border-radius:16px; padding:8px; cursor:pointer; font-family:inherit; }
+.imagen-recomendado{ width:100%; height:80px; object-fit:contain; background:#fff; border-radius:10px; margin-bottom:8px; }
+.nombre-recomendado{ display:block; font-size:0.78rem; font-weight:600; }
+.precio-recomendado{ display:block; font-size:0.75rem; color: var(--color-acento); font-weight:600; }
+
+/* Página genérica (menú / carrito / perfil) */
+.titulo-pagina-movil{ font-family: var(--fuente-titulo); font-weight:900; font-size: 1.5rem; margin: 6px 0 4px; }
+.subtitulo-pagina-movil{ font-size: 0.78rem; color: var(--color-texto-suave); margin: 0 0 16px; }
+
+/* Menú */
+.filtros-movil{ display:flex; gap:8px; overflow-x:auto; margin-bottom: 14px; }
+.filtro-movil{ flex-shrink:0; padding: 8px 16px; border-radius:50px; border:1px solid #e4e4e4; background:#fff; font-size:0.75rem; font-family:inherit; cursor:pointer; }
+.filtro-movil-activo{ background: var(--color-acento); border-color: var(--color-acento); color:#fff; font-weight:600; }
+.estado-carga-movil, .estado-error-movil{ font-size: 0.8rem; color: var(--color-texto-suave); }
+.lista-menu-movil{ display:flex; flex-direction:column; gap: 10px; }
+.fila-platillo-movil{ display:flex; align-items:center; gap: 12px; background:#f7f7f7; border-radius:16px; padding:10px; }
+.imagen-fila-movil{ width:48px; height:48px; border-radius:50%; object-fit:contain; background:#fff; border:1px solid #eee; flex-shrink:0; }
+.info-fila-movil{ flex:1; min-width:0; }
+.nombre-fila-movil{ margin:0; font-size:0.82rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.descripcion-fila-movil{ margin:0; font-size:0.7rem; color: var(--color-texto-suave); }
+.precio-y-agregar-movil{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.precio-fila-movil{ font-size:0.78rem; font-weight:600; color: var(--color-acento); }
+.boton-agregar-movil{ width:26px; height:26px; border-radius:50%; border:none; background: var(--color-acento); color:#fff; font-size:0.9rem; cursor:pointer; }
+
+/* Perfil */
+.tarjeta-perfil{ background:#f7f7f7; border-radius:16px; padding:16px; margin-bottom:14px; }
+.nombre-perfil{ margin:0 0 4px; font-weight:700; }
+.correo-perfil{ margin:0; font-size:0.8rem; color: var(--color-texto-suave); }
+.boton-salir-movil{ width:100%; padding:13px; border-radius:50px; border:1px solid #ddd; background:#fff; font-family:inherit; font-weight:600; cursor:pointer; }
+
+/* Tabs */
+.tabs-inferiores{ display:flex; justify-content:space-around; padding: 10px 0 16px; border-top:1px solid #eee; }
+.tab{ display:flex; flex-direction:column; align-items:center; gap:3px; border:none; background:none; color: var(--color-texto-suave); font-size:0.65rem; cursor:pointer; font-family:inherit; }
+.icono-tab{ width:20px; height:20px; }
+.tab-activo{ color: var(--color-acento); }

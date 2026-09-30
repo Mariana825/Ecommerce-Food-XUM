@@ -1,0 +1,12 @@
+.contenedor-principal{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+.area-vista{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  background: var(--color-fondo);
+}

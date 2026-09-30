@@ -1,0 +1,70 @@
+.encabezado{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 24px;
+  padding: 24px 64px;
+}
+
+.logo-marca{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family: var(--fuente-titulo);
+  font-weight:900;
+  font-size:1.5rem;
+  color: var(--color-texto);
+  background:none; border:none; cursor:pointer; padding:0; font-family: var(--fuente-titulo);
+}
+
+.logo-icono{ width:24px; height:24px; color:var(--color-texto); }
+.logo-acento{ color: var(--color-acento); }
+
+.menu-navegacion{ display:flex; align-items:center; gap: 36px; }
+
+.enlace-nav{
+  font-size: 0.98rem;
+  color: var(--color-texto-suave);
+  transition: color .2s ease;
+  background:none; border:none; cursor:pointer; font-family: inherit; padding:0;
+}
+.enlace-nav:hover{ color: var(--color-texto); }
+.enlace-nav.enlace-activo{ color: var(--color-texto); font-weight: 600; }
+
+.acciones-encabezado{
+  display:flex;
+  align-items:center;
+  gap: 18px;
+}
+
+.saludo-usuario{
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
+  white-space: nowrap;
+}
+
+.envoltorio-carrito{ cursor:pointer; display:flex; }
+
+.boton-salir{
+  font-size: 0.85rem;
+  font-weight:600;
+  color: var(--color-texto);
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color .2s ease, color .2s ease;
+}
+.boton-salir:hover{ border-color: var(--color-acento); color: var(--color-acento); }
+
+@media (max-width: 1024px){
+  .encabezado{ padding: 20px 32px; }
+}
+
+@media (max-width: 720px){
+  .encabezado{ flex-wrap:wrap; row-gap: 14px; padding: 16px 20px; }
+  .menu-navegacion{ order:3; width:100%; justify-content:center; flex-wrap:wrap; gap: 10px 18px; }
+  .saludo-usuario{ display:none; }
+}

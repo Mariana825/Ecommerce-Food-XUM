@@ -1,0 +1,49 @@
+<div class="marco-auto">
+
+  <div class="columna-categorias">
+    <span class="logo-auto"><span class="logo-acento-auto">X</span>UM</span>
+
+    <button type="button" class="boton-categoria" [class.boton-categoria-activo]="tipoMenu==='desayuno'" (click)="cambiarTipoMenu('desayuno')">
+      ☀️ Desayuno
+    </button>
+    <button type="button" class="boton-categoria" [class.boton-categoria-activo]="tipoMenu==='almuerzo'" (click)="cambiarTipoMenu('almuerzo')">
+      🍽️ Almuerzo
+    </button>
+    <button type="button" class="boton-categoria" [class.boton-categoria-activo]="tipoMenu==='cena'" (click)="cambiarTipoMenu('cena')">
+      🌙 Cena
+    </button>
+
+    <button type="button" class="boton-salir-auto" (click)="cerrarSesion()">Salir</button>
+  </div>
+
+  <div class="columna-platillos">
+    <p class="titulo-auto">Toca para agregar</p>
+    <p class="estado-auto" *ngIf="cargando">Cargando…</p>
+
+    <div class="cuadricula-auto" *ngIf="!cargando">
+      <button type="button" class="tarjeta-auto" *ngFor="let producto of productos" (click)="agregarAlCarrito(producto)">
+        <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-auto">
+        <span class="nombre-auto">{{ producto.nombre }}</span>
+        <span class="precio-auto">{{ producto.precio | currency }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="columna-pedido">
+    <p class="titulo-auto">Tu pedido</p>
+
+    <div class="lista-pedido-auto">
+      <div class="fila-pedido-auto" *ngFor="let item of items$ | async">
+        <span class="nombre-pedido-auto">{{ item.cantidad }}× {{ item.producto.nombre }}</span>
+        <span>{{ item.producto.precio * item.cantidad | currency }}</span>
+      </div>
+      <p class="vacio-pedido-auto" *ngIf="(cantidadTotal$ | async) === 0">Sin platillos todavía.</p>
+    </div>
+
+    <p class="total-auto">{{ total$ | async | currency }}</p>
+    <button type="button" class="boton-ordenar-auto" [disabled]="(cantidadTotal$ | async) === 0" (click)="ordenar()">
+      ORDENAR AHORA
+    </button>
+  </div>
+
+</div>

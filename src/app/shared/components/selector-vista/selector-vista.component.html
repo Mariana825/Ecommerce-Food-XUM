@@ -1,0 +1,27 @@
+<nav class="selector-vista" aria-label="Cambiar de interfaz">
+  <button
+    type="button"
+    class="opcion-vista"
+    *ngFor="let opcion of opciones"
+    [class.opcion-vista-activa]="(vista$ | async) === opcion.id"
+    (click)="elegir(opcion.id)">
+
+    <svg *ngIf="opcion.id === 'desktop'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-vista">
+      <rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4" stroke-linecap="round"/>
+    </svg>
+    <svg *ngIf="opcion.id === 'mobile'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-vista">
+      <rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2" stroke-linecap="round"/>
+    </svg>
+    <svg *ngIf="opcion.id === 'smartwatch'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-vista">
+      <rect x="6" y="6" width="12" height="12" rx="4"/><path d="M9 2h6M9 22h6" stroke-linecap="round"/>
+    </svg>
+    <svg *ngIf="opcion.id === 'tablet'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-vista">
+      <rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 18h.01" stroke-linecap="round"/>
+    </svg>
+    <svg *ngIf="opcion.id === 'car'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-vista">
+      <path d="M4 16V11l2-5h12l2 5v5" stroke-linejoin="round"/><path d="M4 16h16M7 16v2M17 16v2" stroke-linecap="round"/><circle cx="7.5" cy="13.5" r="1"/><circle cx="16.5" cy="13.5" r="1"/>
+    </svg>
+
+    <span class="etiqueta-vista">{{ opcion.etiqueta }}</span>
+  </button>
+</nav>

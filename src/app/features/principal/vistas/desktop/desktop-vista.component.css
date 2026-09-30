@@ -1,0 +1,62 @@
+/* ---- Inicio (hero) ---- */
+.seccion-hero{
+  display:flex; align-items:center; justify-content: space-between;
+  gap: 40px; padding: 40px 64px 80px; max-width: 1440px; margin: 0 auto;
+}
+.columna-texto{ flex: 0 0 380px; }
+.titulo-hero{ font-family: var(--fuente-titulo); font-weight: 900; font-size: 5.5rem; line-height: 0.92; margin: 0 0 32px; }
+.subtitulo-hero{ display:flex; align-items:flex-start; gap: 16px; color: var(--color-texto-suave); font-size: 0.95rem; letter-spacing: 0.5px; text-transform: uppercase; line-height:1.6; margin: 0 0 48px; }
+.linea-decorativa{ display:block; width: 32px; height: 1px; margin-top: 10px; background: var(--color-texto-suave); flex-shrink:0; }
+.boton-pedido{ display:inline-flex; align-items:center; gap: 18px; background: var(--color-acento); color:#fff; padding: 20px 34px; border-radius: 50px; font-weight:600; border:none; cursor:pointer; font-family:inherit; font-size:1rem; box-shadow: 0 16px 30px rgba(243,129,47,0.35); transition: transform .2s ease; }
+.boton-pedido:hover{ transform: translateY(-2px); }
+.separador-boton{ width: 34px; height: 1px; background: rgba(255,255,255,0.7); }
+.texto-boton{ letter-spacing: 0.5px; }
+
+.columna-imagen{ position:relative; flex: 1 1 auto; display:flex; justify-content:center; }
+.foto-plato{ width: min(44vw, 640px); aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; }
+.tarjetas-flotantes{ position:absolute; right: -30px; top: 12%; display:flex; flex-direction: column; gap: 26px; width: 400px; }
+.tarjeta-producto{ display:flex; align-items:center; gap: 18px; background: var(--color-superficie); border-radius: 50px; padding: 10px; border:none; cursor:pointer; text-align:left; box-shadow: var(--sombra-tarjeta); transition: transform .2s ease; }
+.tarjeta-producto:hover{ transform: translateX(-6px); }
+.tarjeta-producto.tarjeta-activa{ background: var(--color-acento); color:#fff; }
+.miniatura-producto{ width: 80px; height: 80px; border-radius:50%; object-fit: cover; flex-shrink:0; }
+.info-producto{ display:flex; flex-direction:column; gap:4px; }
+.nombre-producto{ font-size: 1rem; font-weight: 600; font-family: var(--fuente-cuerpo); }
+.descripcion-producto{ font-size: 0.82rem; opacity: 0.85; line-height:1.4; }
+
+/* ---- Menú ---- */
+.seccion-menu{ max-width: 1440px; margin: 0 auto; padding: 30px 64px 100px; }
+.cabecera-pagina{ margin-bottom: 30px; }
+.titulo-pagina{ font-family: var(--fuente-titulo); font-weight: 900; font-size: 2.6rem; margin: 0 0 10px; }
+.subtitulo-pagina{ color: var(--color-texto-suave); font-size: 1rem; margin: 0; }
+.filtros-menu{ display:flex; flex-wrap: wrap; gap: 14px; margin: 0 0 36px; }
+.filtro{ display:inline-flex; align-items:center; padding: 12px 26px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; background: var(--color-superficie); border: 1px solid #e4e4e4; color: var(--color-texto); cursor:pointer; font-family:inherit; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.filtro:hover{ border-color: var(--color-acento); }
+.filtro.filtro-activo{ background: var(--color-acento); border-color: var(--color-acento); color:#fff; font-weight:600; }
+.estado-carga, .estado-error{ color: var(--color-texto-suave); font-size: 0.95rem; padding: 30px 0; }
+.estado-error{ color: #c0392b; }
+.cuadricula-platillos{ display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; }
+
+/* ---- Carrito ---- */
+.seccion-carrito{ max-width: 1440px; margin: 0 auto; padding: 30px 64px 120px; }
+.diseno-carrito{ display:grid; grid-template-columns: 1fr 360px; gap: 32px; margin-top: 36px; align-items:start; }
+.panel-productos{ background: var(--color-superficie); border-radius: var(--radio-grande); min-height: 400px; }
+
+@media (max-width: 1024px){
+  .seccion-hero{ flex-direction:column; padding: 30px 32px 60px; text-align:center; }
+  .subtitulo-hero{ justify-content:center; }
+  .titulo-hero{ font-size: 3.8rem; }
+  .columna-imagen{ width:100%; }
+  .foto-plato{ width: min(80vw, 460px); }
+  .tarjetas-flotantes{ position:static; width:100%; margin-top: 28px; }
+  .seccion-menu, .seccion-carrito{ padding-left: 32px; padding-right: 32px; }
+  .diseno-carrito{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px){
+  .seccion-hero{ padding: 24px 20px 40px; }
+  .titulo-hero{ font-size: 2.6rem; }
+  .boton-pedido{ width:100%; justify-content:center; }
+  .seccion-menu, .seccion-carrito{ padding: 20px 20px 60px; }
+  .titulo-pagina{ font-size: 1.9rem; }
+  .cuadricula-platillos{ grid-template-columns: 1fr; }
+}

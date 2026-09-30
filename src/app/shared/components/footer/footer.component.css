@@ -1,0 +1,25 @@
+.pie-pagina{
+  background: #16140f;
+  color: #d8d5cd;
+  padding: 40px 64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pie-pagina .logo-marca{
+  display:flex; align-items:center; gap:10px;
+  font-family: var(--fuente-titulo);
+  font-weight:900; font-size:1.4rem;
+  color:#fff;
+}
+.pie-pagina .logo-icono{ width:22px; height:22px; color:#fff; }
+.pie-pagina .logo-acento{ color: var(--color-acento); }
+
+.texto-derechos{ margin:0; font-size: 0.85rem; color: #9c998f; }
+
+@media (max-width: 720px){
+  .pie-pagina{ flex-direction:column; text-align:center; padding: 26px 20px; }
+}

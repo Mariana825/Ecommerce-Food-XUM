@@ -1,0 +1,25 @@
+<aside class="panel-resumen" [class.panel-resumen-compacto]="compacto">
+  <h2 class="titulo-resumen">Resumen del pedido</h2>
+
+  <div class="fila-resumen">
+    <span>Subtotal</span>
+    <span>{{ (subtotal$ | async) ?? 0 | currency }}</span>
+  </div>
+  <div class="fila-resumen">
+    <span>Costo de envío</span>
+    <span>{{ (costoEnvio$ | async) ?? 0 | currency }}</span>
+  </div>
+  <div class="fila-resumen fila-total">
+    <span>Total</span>
+    <span class="valor-total">{{ (total$ | async) ?? 0 | currency }}</span>
+  </div>
+
+  <button
+    type="button"
+    class="boton-pagar"
+    [class.boton-deshabilitado]="(cantidadTotal$ | async) === 0"
+    [disabled]="(cantidadTotal$ | async) === 0"
+    (click)="pagar()">
+    PROCEDER AL PAGO
+  </button>
+</aside>

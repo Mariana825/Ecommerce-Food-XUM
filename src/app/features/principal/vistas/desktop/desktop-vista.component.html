@@ -1,0 +1,81 @@
+<app-encabezado [seccionActiva]="pantalla === 'menu' ? tipoMenu : pantalla" (seleccionar)="alSeleccionarEncabezado($event)" (salir)="alCerrarSesion()"></app-encabezado>
+
+<!-- ============ INICIO ============ -->
+<main class="seccion-hero" *ngIf="pantalla === 'inicio'">
+  <div class="columna-texto">
+    <h1 class="titulo-hero">Food<br>Zone</h1>
+    <p class="subtitulo-hero">
+      <span class="linea-decorativa"></span>
+      <ng-container *ngIf="usuario; else saludoGenerico">Hola {{ usuario.nombre }}, ¿qué se te antoja hoy?</ng-container>
+      <ng-template #saludoGenerico>Norem ipsum dolor sit amet, consectetur.</ng-template>
+    </p>
+    <button type="button" class="boton-pedido" (click)="irAMenu('almuerzo')">
+      <span class="precio">$20</span>
+      <span class="separador-boton"></span>
+      <span class="texto-boton">ORDENAR AHORA</span>
+    </button>
+  </div>
+
+  <div class="columna-imagen">
+    <img src="assets/imagenes/plato-principal.png" alt="Plato Caviar Express" class="foto-plato">
+    <div class="tarjetas-flotantes">
+      <button type="button" class="tarjeta-producto tarjeta-activa" (click)="irAMenu('almuerzo')">
+        <img src="assets/imagenes/miniatura-caviar.png" alt="Caviar Express" class="miniatura-producto">
+        <span class="info-producto">
+          <span class="nombre-producto">Caviar Express</span>
+          <span class="descripcion-producto">Norem ipsum dolor sit amet, consectetur</span>
+        </span>
+      </button>
+      <button type="button" class="tarjeta-producto" (click)="irAMenu('almuerzo')">
+        <img src="assets/imagenes/miniatura-arandano.png" alt="Blue Berry" class="miniatura-producto">
+        <span class="info-producto">
+          <span class="nombre-producto">Blue Berry</span>
+          <span class="descripcion-producto">Norem ipsum dolor sit amet, consectetur</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</main>
+
+<!-- ============ MENÚ ============ -->
+<main class="seccion-menu" *ngIf="pantalla === 'menu'">
+  <div class="cabecera-pagina">
+    <h1 class="titulo-pagina">{{ tituloMenu }}</h1>
+    <p class="subtitulo-pagina">{{ subtituloMenu }}</p>
+  </div>
+
+  <nav class="filtros-menu">
+    <button type="button" class="filtro" [class.filtro-activo]="tipoMenu === 'desayuno'" (click)="irAMenu('desayuno')">Desayuno</button>
+    <button type="button" class="filtro" [class.filtro-activo]="tipoMenu === 'almuerzo'" (click)="irAMenu('almuerzo')">Almuerzo</button>
+    <button type="button" class="filtro" [class.filtro-activo]="tipoMenu === 'cena'" (click)="irAMenu('cena')">Cena</button>
+  </nav>
+
+  <p class="estado-carga" *ngIf="cargando">Cargando platillos desde la API…</p>
+  <p class="estado-error" *ngIf="error">{{ error }}</p>
+
+  <div class="cuadricula-platillos" *ngIf="!cargando && !error">
+    <app-tarjeta-platillo
+      *ngFor="let producto of productos"
+      [producto]="producto"
+      (agregar)="agregarAlCarrito($event)">
+    </app-tarjeta-platillo>
+  </div>
+</main>
+
+<!-- ============ CARRITO ============ -->
+<section class="seccion-carrito" *ngIf="pantalla === 'carrito'">
+  <div class="cabecera-pagina">
+    <h1 class="titulo-pagina">Tu Carrito</h1>
+    <p class="subtitulo-pagina">Revisa tus deliciosas selecciones.</p>
+  </div>
+
+  <div class="diseno-carrito">
+    <div class="panel-productos">
+      <app-carrito-lista (irAlMenu)="irAMenu('almuerzo')"></app-carrito-lista>
+    </div>
+    <app-resumen-pedido></app-resumen-pedido>
+  </div>
+</section>
+
+
+<app-footer></app-footer>

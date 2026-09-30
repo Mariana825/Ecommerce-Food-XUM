@@ -1,0 +1,115 @@
+<div class="marco-telefono">
+
+  <!-- barra de estado simulada -->
+  <div class="barra-estado">
+    <span>9:41</span>
+    <span class="iconos-estado">●●●</span>
+  </div>
+
+  <!-- encabezado compacto propio del teléfono -->
+  <div class="encabezado-movil">
+    <span class="logo-marca-movil">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="logo-icono-movil">
+        <path d="M6 10c0-3 2.5-6 6-6s6 3 6 6" stroke-linecap="round"/>
+        <path d="M4 10h16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2Z"/>
+      </svg>
+      <span>XUM</span>
+    </span>
+    <app-badge-carrito [pequeno]="true"></app-badge-carrito>
+  </div>
+
+  <!-- contenido según la pestaña activa -->
+  <div class="contenido-movil">
+
+    <!-- INICIO -->
+    <ng-container *ngIf="pantalla === 'inicio'">
+      <h1 class="titulo-hero-movil">Food<br>Zone</h1>
+      <p class="subtitulo-hero-movil">FRESH DAILY · <span *ngIf="usuario">Hola {{ usuario.nombre }}</span></p>
+
+      <div class="tarjeta-hero-movil">
+        <img src="assets/imagenes/plato-principal.png" alt="Plato principal" class="foto-hero-movil">
+        <button type="button" class="boton-pedido-movil" (click)="irA('menu')">
+          <span>$20</span><span class="separador-boton-movil"></span>ORDER NOW
+        </button>
+      </div>
+
+      <p class="subtitulo-seccion-movil">Chef's Recommendation</p>
+      <div class="lista-recomendados">
+        <button type="button" class="tarjeta-recomendado" (click)="irA('menu')" *ngFor="let producto of productos.slice(0,2)">
+          <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-recomendado">
+          <span class="nombre-recomendado">{{ producto.nombre }}</span>
+          <span class="precio-recomendado">{{ producto.precio | currency }}</span>
+        </button>
+      </div>
+    </ng-container>
+
+    <!-- MENÚ -->
+    <ng-container *ngIf="pantalla === 'menu'">
+      <h1 class="titulo-pagina-movil">{{ tituloMenu }}</h1>
+      <p class="subtitulo-pagina-movil">{{ subtituloMenu }}</p>
+
+      <div class="filtros-movil">
+        <button type="button" class="filtro-movil" [class.filtro-movil-activo]="tipoMenu==='desayuno'" (click)="cambiarTipoMenu('desayuno')">Desayuno</button>
+        <button type="button" class="filtro-movil" [class.filtro-movil-activo]="tipoMenu==='almuerzo'" (click)="cambiarTipoMenu('almuerzo')">Almuerzo</button>
+        <button type="button" class="filtro-movil" [class.filtro-movil-activo]="tipoMenu==='cena'" (click)="cambiarTipoMenu('cena')">Cena</button>
+      </div>
+
+      <p class="estado-carga-movil" *ngIf="cargando">Cargando…</p>
+      <p class="estado-error-movil" *ngIf="error">{{ error }}</p>
+
+      <div class="lista-menu-movil" *ngIf="!cargando && !error">
+        <div class="fila-platillo-movil" *ngFor="let producto of productos">
+          <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-fila-movil">
+          <div class="info-fila-movil">
+            <p class="nombre-fila-movil">{{ producto.nombre }}</p>
+            <p class="descripcion-fila-movil">{{ producto.descripcion | slice:0:60 }}…</p>
+          </div>
+          <div class="precio-y-agregar-movil">
+            <span class="precio-fila-movil">{{ producto.precio | currency }}</span>
+            <button type="button" class="boton-agregar-movil" (click)="agregarAlCarrito(producto)" aria-label="Agregar">+</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- CARRITO -->
+    <ng-container *ngIf="pantalla === 'carrito'">
+      <h1 class="titulo-pagina-movil">Your Cart</h1>
+      <p class="subtitulo-pagina-movil">Review your delicious selections.</p>
+      <app-carrito-lista [compacto]="true" (irAlMenu)="irA('menu')"></app-carrito-lista>
+      <app-resumen-pedido [compacto]="true"></app-resumen-pedido>
+    </ng-container>
+
+    <!-- PERFIL -->
+    <ng-container *ngIf="pantalla === 'perfil'">
+      <h1 class="titulo-pagina-movil">Perfil</h1>
+      <div class="tarjeta-perfil" *ngIf="usuario">
+        <p class="nombre-perfil">{{ usuario.nombre }}</p>
+        <p class="correo-perfil">{{ usuario.correo }}</p>
+      </div>
+      <button type="button" class="boton-salir-movil" (click)="cerrarSesion()">Cerrar sesión</button>
+    </ng-container>
+
+  </div>
+
+  <!-- tabs inferiores, igual que en el diseño de Figma -->
+  <nav class="tabs-inferiores">
+    <button type="button" class="tab" [class.tab-activo]="pantalla==='inicio'" (click)="irA('inicio')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-tab"><path d="M4 11.5 12 4l8 7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke-linecap="round"/></svg>
+      <span>Home</span>
+    </button>
+    <button type="button" class="tab" [class.tab-activo]="pantalla==='menu'" (click)="irA('menu')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-tab"><path d="M6 4v16M18 4v6a2 2 0 0 1-4 0V4M16 10v10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Menu</span>
+    </button>
+    <button type="button" class="tab" [class.tab-activo]="pantalla==='carrito'" (click)="irA('carrito')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-tab"><path d="M4 4h2l1.2 12.2A2 2 0 0 0 9.2 18h8.1a2 2 0 0 0 2-1.7L20.5 8H6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="21" r="1.2"/><circle cx="17" cy="21" r="1.2"/></svg>
+      <span>Cart</span>
+    </button>
+    <button type="button" class="tab" [class.tab-activo]="pantalla==='perfil'" (click)="irA('perfil')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="icono-tab"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c1.2-3.5 4-5.2 7-5.2s5.8 1.7 7 5.2" stroke-linecap="round"/></svg>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+</div>

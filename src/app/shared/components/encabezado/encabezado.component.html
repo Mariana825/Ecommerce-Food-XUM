@@ -1,0 +1,28 @@
+<header class="encabezado">
+
+  <button type="button" class="logo-marca" (click)="seleccionar.emit('inicio')">
+    <svg class="logo-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M6 10c0-3 2.5-6 6-6s6 3 6 6" stroke-linecap="round"/>
+      <path d="M4 10h16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2Z"/>
+      <path d="M5 20h14M6 16l.6 4M18 16l-.6 4"/>
+    </svg>
+    <span><span class="logo-acento">X</span>UM</span>
+  </button>
+
+  <nav class="menu-navegacion">
+    <button type="button" class="enlace-nav" [class.enlace-activo]="seccionActiva === 'desayuno'" (click)="seleccionar.emit('desayuno')">Desayuno</button>
+    <button type="button" class="enlace-nav" [class.enlace-activo]="seccionActiva === 'almuerzo'" (click)="seleccionar.emit('almuerzo')">Almuerzo</button>
+    <button type="button" class="enlace-nav" [class.enlace-activo]="seccionActiva === 'cena'" (click)="seleccionar.emit('cena')">Cena</button>
+  </nav>
+
+  <div class="acciones-encabezado">
+    <span class="saludo-usuario" *ngIf="usuario">Hola, {{ usuario.nombre }}</span>
+
+    <span class="envoltorio-carrito" (click)="seleccionar.emit('carrito')">
+      <app-badge-carrito></app-badge-carrito>
+    </span>
+
+    <button type="button" class="boton-salir" (click)="cerrarSesion()">Salir</button>
+  </div>
+
+</header>

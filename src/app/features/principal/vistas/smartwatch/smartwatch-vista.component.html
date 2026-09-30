@@ -1,0 +1,54 @@
+<div class="marco-reloj">
+
+  <!-- mini barra superior: siempre visible, para no perder funcionalidad -->
+  <div class="barra-superior-reloj">
+    <button type="button" class="icono-mini" (click)="irA('carrito')" aria-label="Ver carrito">
+      🛒<span class="punto-contador" *ngIf="(cantidadTotal$ | async)">{{ cantidadTotal$ | async }}</span>
+    </button>
+    <button type="button" class="icono-mini" (click)="cerrarSesion()" aria-label="Cerrar sesión">⏻</button>
+  </div>
+
+  <!-- INICIO -->
+  <div class="pantalla-reloj" *ngIf="pantalla === 'inicio'">
+    <span class="logo-reloj"><span class="logo-acento-reloj">X</span>UM</span>
+    <button type="button" class="plato-reloj" (click)="irA('menu')" aria-label="Ver menú">
+      <img src="assets/imagenes/miniatura-caviar.png" alt="Menú">
+    </button>
+    <div class="nav-reloj">
+      <span (click)="tipoMenu='desayuno'" [class.nav-reloj-activo]="tipoMenu==='desayuno'">Breakfast</span>
+      <span (click)="tipoMenu='almuerzo'" [class.nav-reloj-activo]="tipoMenu==='almuerzo'">Lunch</span>
+      <span (click)="tipoMenu='cena'" [class.nav-reloj-activo]="tipoMenu==='cena'">Dinner</span>
+    </div>
+  </div>
+
+  <!-- MENÚ / SELECT DISH -->
+  <div class="pantalla-reloj pantalla-reloj-lista" *ngIf="pantalla === 'menu'">
+    <p class="titulo-reloj-chico">SELECT DISH</p>
+    <button
+      type="button"
+      class="fila-platillo-reloj"
+      *ngFor="let producto of productos; let i = index"
+      [class.fila-platillo-reloj-activa]="i === 0"
+      (click)="elegirPlatillo(producto)">
+      <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-fila-reloj">
+      <span class="nombre-fila-reloj">{{ producto.nombre }}</span>
+    </button>
+    <p class="estado-reloj" *ngIf="cargando">Cargando…</p>
+  </div>
+
+  <!-- CONFIRMAR -->
+  <div class="pantalla-reloj" *ngIf="pantalla === 'confirmar' && platilloSeleccionado">
+    <div class="icono-confirmar-reloj">✓</div>
+    <p class="texto-confirmar-reloj">1x {{ platilloSeleccionado.nombre }} ({{ platilloSeleccionado.precio | currency }})</p>
+    <button type="button" class="boton-reloj" (click)="confirmarPedido()">ORDER NOW</button>
+  </div>
+
+  <!-- CARRITO -->
+  <div class="pantalla-reloj" *ngIf="pantalla === 'carrito'">
+    <p class="titulo-reloj-chico">TU CARRITO</p>
+    <p class="total-reloj">{{ total$ | async | currency }}</p>
+    <p class="subtexto-reloj">{{ cantidadTotal$ | async }} platillo(s)</p>
+    <button type="button" class="boton-reloj" (click)="irA('inicio')">VOLVER</button>
+  </div>
+
+</div>

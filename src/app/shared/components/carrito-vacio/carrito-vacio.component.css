@@ -1,0 +1,17 @@
+.carrito-vacio{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; gap: 16px; padding: 80px 40px;
+}
+.icono-carrito-vacio{ width: 64px; height: 64px; color: #d5d5d5; }
+.titulo-carrito-vacio{ margin:0; font-size: 1.25rem; font-weight:600; }
+.texto-carrito-vacio{ margin:0; max-width: 340px; color: var(--color-texto-suave); font-size: 0.92rem; line-height:1.6; }
+
+.enlace-ver-menu{
+  display:inline-flex; align-items:center; margin-top: 6px;
+  padding: 13px 28px; border-radius: 50px; border:none; cursor:pointer;
+  background: var(--color-acento); color:#fff; font-weight:600; font-size: 0.88rem;
+  font-family: inherit;
+  box-shadow: 0 14px 26px rgba(243,129,47,0.3);
+  transition: transform .2s ease;
+}
+.enlace-ver-menu:hover{ transform: translateY(-2px); }

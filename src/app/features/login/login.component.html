@@ -1,0 +1,63 @@
+<section class="pantalla-login">
+
+  <div class="panel-formulario">
+
+    <a routerLink="/login" class="logo-marca">
+      <svg class="logo-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M6 10c0-3 2.5-6 6-6s6 3 6 6" stroke-linecap="round"/>
+        <path d="M4 10h16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2Z"/>
+        <path d="M5 20h14M6 16l.6 4M18 16l-.6 4"/>
+      </svg>
+      <span><span class="logo-acento">X</span>UM</span>
+    </a>
+
+    <h1 class="titulo-login">Bienvenido de nuevo</h1>
+    <p class="subtitulo-login">Inicia sesión para continuar en XUM Food Zone.</p>
+
+    <form class="formulario-login" [formGroup]="formularioLogin" (ngSubmit)="iniciarSesion()" novalidate>
+
+      <label class="campo-etiqueta" for="correo">Correo electrónico</label>
+      <input
+        id="correo"
+        type="email"
+        class="campo-input"
+        formControlName="correo"
+        placeholder="tucorreo@ejemplo.com"
+        autocomplete="email">
+      <p class="campo-error" *ngIf="correo?.invalid && correo?.touched">
+        Ingresa un correo electrónico válido.
+      </p>
+
+      <label class="campo-etiqueta" for="contrasena">Contraseña</label>
+      <input
+        id="contrasena"
+        type="password"
+        class="campo-input"
+        formControlName="contrasena"
+        placeholder="••••••••"
+        autocomplete="current-password">
+      <p class="campo-error" *ngIf="contrasena?.invalid && contrasena?.touched">
+        La contraseña debe tener al menos 4 caracteres.
+      </p>
+
+      <p class="mensaje-error-login" *ngIf="mensajeError">{{ mensajeError }}</p>
+
+      <button type="submit" class="boton-login" [disabled]="cargando">
+        {{ cargando ? 'Verificando…' : 'Iniciar sesión' }}
+      </button>
+    </form>
+
+    <p class="credenciales-demo">
+      Demo: <strong>mariana&#64;xum.com</strong> / <strong>1234</strong>
+    </p>
+  </div>
+
+  <div class="panel-imagen">
+    <img src="assets/imagenes/plato-principal.png" alt="Platillo XUM" class="imagen-login">
+    <div class="superposicion-login">
+      <h2 class="titulo-superposicion">Food Zone</h2>
+      <p class="texto-superposicion">Sabores frescos, preparados con amor.</p>
+    </div>
+  </div>
+
+</section>

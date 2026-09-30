@@ -1,0 +1,16 @@
+.boton-carrito{
+  position:relative; display:flex; align-items:center; justify-content:center;
+  width: 42px; height: 42px; color: var(--color-texto);
+  background:none; border:none; cursor:pointer; padding:0;
+}
+.icono-carrito{ width:24px; height:24px; }
+.contador-carrito{
+  position:absolute; top:-2px; right:-2px;
+  background: var(--color-acento); color:#fff;
+  font-size: 0.65rem; font-weight:600;
+  width:18px; height:18px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.boton-carrito-pequeno{ width:26px; height:26px; }
+.boton-carrito-pequeno .icono-carrito{ width:16px; height:16px; }
+.boton-carrito-pequeno .contador-carrito{ width:13px; height:13px; font-size:0.5rem; }

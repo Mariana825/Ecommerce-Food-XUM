@@ -1,0 +1,53 @@
+.tarjeta-platillo{
+  background: var(--color-superficie);
+  border-radius: var(--radio-grande);
+  padding: 28px;
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.encabezado-platillo{ display:flex; align-items:center; gap: 18px; margin-bottom: 16px; }
+
+.imagen-platillo{
+  width: 76px; height: 76px;
+  border-radius:50%;
+  object-fit:contain;
+  background:#fff;
+  border: 1px solid #eee;
+  flex-shrink:0;
+  padding: 6px;
+}
+
+.nombre-platillo{ margin: 0 0 4px; font-size: 1.1rem; font-weight: 600; }
+.precio-platillo{ margin:0; color: var(--color-acento); font-weight: 600; }
+
+.descripcion-platillo{
+  color: var(--color-texto-suave);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0 0 20px;
+}
+
+.pie-platillo{ display:flex; align-items:center; justify-content:space-between; gap: 16px; }
+.etiquetas-platillo{ display:flex; flex-wrap:wrap; gap: 8px; }
+
+.etiqueta{
+  background: #f1f1f1;
+  color: var(--color-texto-suave);
+  font-size: 0.72rem;
+  font-weight:500;
+  padding: 6px 13px;
+  border-radius: 50px;
+}
+
+.boton-agregar{
+  width: 38px; height: 38px;
+  flex-shrink:0;
+  border-radius:50%;
+  background: var(--color-acento);
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size: 1.15rem; font-weight:600;
+  box-shadow: 0 10px 20px rgba(243,129,47,0.35);
+  transition: transform .2s ease;
+}
+.boton-agregar:hover{ transform: scale(1.08); }

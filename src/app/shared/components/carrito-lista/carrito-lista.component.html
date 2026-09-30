@@ -1,0 +1,24 @@
+<div class="carrito-lista" [class.carrito-lista-compacta]="compacto">
+
+  <app-carrito-vacio *ngIf="(items$ | async)?.length === 0" (irAlMenu)="irAlMenu.emit()"></app-carrito-vacio>
+
+  <ul class="items-carrito" *ngIf="(items$ | async)?.length as total">
+    <li class="item-carrito" *ngFor="let item of items$ | async">
+      <img [src]="item.producto.imagen" [alt]="item.producto.nombre" class="imagen-item">
+
+      <div class="detalle-item">
+        <p class="nombre-item">{{ item.producto.nombre }}</p>
+        <p class="precio-item">{{ item.producto.precio | currency }}</p>
+      </div>
+
+      <div class="control-cantidad">
+        <button type="button" class="boton-cantidad" (click)="decrementar(item.producto.id)" aria-label="Quitar uno">−</button>
+        <span class="valor-cantidad">{{ item.cantidad }}</span>
+        <button type="button" class="boton-cantidad" (click)="incrementar(item.producto.id)" aria-label="Agregar uno">+</button>
+      </div>
+
+      <button type="button" class="boton-quitar" (click)="quitar(item.producto.id)" aria-label="Eliminar del carrito">✕</button>
+    </li>
+  </ul>
+
+</div>

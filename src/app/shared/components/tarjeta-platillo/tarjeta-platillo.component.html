@@ -1,0 +1,19 @@
+<article class="tarjeta-platillo">
+  <div class="encabezado-platillo">
+    <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-platillo">
+    <div>
+      <h3 class="nombre-platillo">{{ producto.nombre }}</h3>
+      <p class="precio-platillo">{{ producto.precio | currency }}</p>
+    </div>
+  </div>
+
+  <p class="descripcion-platillo">{{ producto.descripcion | slice:0:90 }}…</p>
+
+  <div class="pie-platillo">
+    <div class="etiquetas-platillo">
+      <span class="etiqueta">API</span>
+      <span class="etiqueta">Demo</span>
+    </div>
+    <button type="button" class="boton-agregar" (click)="alAgregar()" [attr.aria-label]="'Agregar ' + producto.nombre">+</button>
+  </div>
+</article>
