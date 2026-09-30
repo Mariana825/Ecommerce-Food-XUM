@@ -8,7 +8,6 @@ import { TabletVistaComponent } from './vistas/tablet/tablet-vista.component';
 import { MobileVistaComponent } from './vistas/mobile/mobile-vista.component';
 import { SmartwatchVistaComponent } from './vistas/smartwatch/smartwatch-vista.component';
 import { CarVistaComponent } from './vistas/car/car-vista.component';
-import { HolaComponent } from 'src/app/hola/hola.component';
 
 
 const rutas: Routes = [
@@ -27,7 +26,6 @@ const rutas: Routes = [
     MobileVistaComponent,
     SmartwatchVistaComponent,
     CarVistaComponent,
-    HolaComponent
   ],
   imports: [SharedModule, RouterModule.forChild(rutas)]
 })
